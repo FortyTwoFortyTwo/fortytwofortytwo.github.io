@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: https://ogp.me/ns#">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>FortyTwoFortyTwo</title>
+
+    <meta property="og:site_name" content="FortyTwoFortyTwo"/>
+
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/main.js"></script>
+</head>
+
+<body class="background-main">
+    <div class="header">
+        <span class="title-1">Forty</span><span class="title-2">Two</span><span class="title-1">Forty</span><span class="title-2">Two</span>
+    </div>
+
+    <div class="section box background-orange">
+        <p>Hi, my name is Connor Rowland. I am profoundly deaf, and use cochlear implants to hear. Spoken language can be difficult in some situations, but one reason I love coding is that computer languages seem to come naturally to me!</p>
+        <p>I got into coding by creating some maps and mods for one of my favourite games, Valve Software’s TF2. This interest has grown over the years, and with a colleague I built a large website from scratch for the whole TF2 gaming community where people can trade and acquire customizations. This has involved front and back end, and I enjoy both. I enjoyed working with my friend and love being at the heart of a great group of people there.</p>
+        <p>I'm a recently qualified Junior Full Stack Developer. I’m really keen to now move into coding full time and increase my knowledge of practical coding. I also help out every week at the local food bank, it’s rewarding to do something positive for people who need help.</p>
+        <p>Below you can see some more details of my work and what languages I use. There’s also some examples of the things I’ve worked on, and there’s a fast and furious <a href="oddout.html">odd-one-out</a> logic game to play, it took about 30 hours to make. Thanks for looking at my site!</p>
+    </div>
+
+    <div class="section flex flex-small">
+        <div class="box redsun">
+            <h1>redsun.tf</h1>
+
+            <div class="flex">
+                <div style="min-width: min(350px, 100%); max-width: 100%;">
+                    <p>One of my main recent projects is <a href="https://redsun.tf/">redsun.tf</a>, a community home for Valve Software’s TF2, where people can trade and acquire customizations and mods.</p>
+                    <p>I am one of two lead programmers for both frontend and backend, using HTML, CSS, JavaScript, Python and Django.</p>
+                    <p>I built the site from scratch with my colleague, and I continue to provide new functionality. I also maintain their large MySQL database.</p>
+                </div>
+
+                <div style="max-width: 250px"></div>
+            </div>
+        </div>
+
+        <div class="flex-auto box-spacer"></div>
+
+        <div class="before box tf2">
+            <h1>SourcePawn</h1>
+
+            <p>Since late 2018, I've actively created and maintained many plugins using SourcePawn language, similar to C++</p>
+
+            <p><a href="https://github.com/FortyTwoFortyTwo/Randomizer">Randomizer</a> - Game randomizes what loadout player has to play, including combinations where its normally not possible to do</p>
+            <p><a href="https://github.com/FortyTwoFortyTwo/VScript">VScript</a> - useful libary that allows other plugins to make use of VScript features</p>
+            <p><a href="https://github.com/redsunservers/VSH-Rewrite">Versus Saxton Hale</a> - One man, Saxton Hale, has a task to kill everyone else in a One versus All match</p>
+            <p><a href="https://github.com/redsunservers/SuperZombieFortress">Super Zombie Fortress</a> - Group of survivors only have one life to reach the end of the map, facing a horde of zombies.</p>
+        </div>
+    </div>
+
+    <div class="before section box maps background-orange">
+        <h1>Maps</h1>
+
+        <p>From 2016 to 2018, and still a little to this day, I've developed several maps for Team Fortress 2 community, each for different gamemode, themes, and gimmicks.</p>
+        <p>I tried to give each map its own unique gameplay and gimmick to differ from many other maps that had been made.</p>
+
+        <div class="border-black"></div>
+
+        <div class="flex">
+            <div class="map" onclick="onMapSelected('trainyard')" style="background-image: url('imgs/trainyard/1.jpg');">
+                <div class="map-text text-trainyard"><span>Trainyard</span></div>
+            </div>
+
+            <div class="flex-auto" style="width: var(--box-border-width); background: black;"></div>
+
+            <div class="map" onclick="onMapSelected('burgstadt')" style="background-image: url('imgs/burgstadt/1.jpg');">
+                <div class="map-text text-burgstadt"><span>Burgstadt</span></div>
+            </div>
+
+            <div class="flex-auto" style="width: var(--box-border-width); background: black;"></div>
+
+            <div class="map" onclick="onMapSelected('shapes')" style="background-image: url('imgs/shapes/1.jpg');">
+                <div class="map-text text-shapes">
+                    <span>S</span>
+                    <span>h</span>
+                    <span>a</span>
+                    <span>p</span>
+                    <span>e</span>
+                    <span>s</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="border-black"></div>
+
+        <div style="position: relative">
+            <div map="none">
+                <!-- Whole thing here is just a buffer, making height same as all other maps for smooth transition-->
+
+                <div class="text-"><span>Select image for more info</span></div>
+
+                <p style="opacity: 0">Buffer</p>
+
+                <div class="border-black"></div>
+
+                <div class="gallery" style="opacity: 0">
+                    <div class="scrollbar">
+                        <div class="overflow"></div>
+                        <img class="gallery-image" src="imgs/trainyard/1.jpg">
+                        <div class="overflow"></div>
+                    </div>
+                    <div class="flex gallery-gradient">
+                        <div class="flex-center" onclick="goTo('buffer', -1)"><img src="imgs/arrow-left.png"></div>
+                        <div class="gallery-image flex-auto" style="padding: 0px 10px 0px 10px"></div>
+                        <div class="flex-center" onclick="goTo('buffer', 1)"><img src="imgs/arrow-right.png"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div map="trainyard">
+                <div class="text-trainyard"><span>Trainyard</span></div>
+
+                <p>It's a yard full of trains, simple enough? For a Mann vs Machine gamemode, area occasionally get trains passing through the area, but there can be enemy trains stopping by to help enemy robots make use of it to take a shortcut!</p>
+
+                <div class="border-black"></div>
+
+                <div class="gallery">
+                    <div class="scrollbar">
+                        <div class="overflow"></div>
+                        <img class="gallery-image" src="imgs/trainyard/1.jpg">
+                        <img class="gallery-image" src="imgs/trainyard/2.jpg">
+                        <img class="gallery-image" src="imgs/trainyard/3.jpg">
+                        <img class="gallery-image" src="imgs/trainyard/4.jpg">
+                        <img class="gallery-image" src="imgs/trainyard/5.jpg">
+                        <img class="gallery-image" src="imgs/trainyard/6.jpg">
+                        <img class="gallery-image" src="imgs/trainyard/7.jpg">
+                        <img class="gallery-image" src="imgs/trainyard/8.jpg">
+                        <div class="overflow"></div>
+                    </div>
+                    <div class="flex gallery-gradient">
+                        <div class="flex-center" onclick="goTo('trainyard', -1)"><img src="imgs/arrow-left.png"></div>
+                        <div class="gallery-image flex-auto" style="padding: 0px 10px 0px 10px"></div>
+                        <div class="flex-center" onclick="goTo('trainyard', 1)"><img src="imgs/arrow-right.png"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div map="burgstadt">
+                <div class="text-burgstadt"><span>Burgstadt</span></div>
+
+                <p>Orginally for Mann vs Machine, it later get converted for GunGame. Set in a medieval market town, players face eachother for a deathmatch where only one can win.</p>
+
+                <div class="border-black"></div>
+
+                <div class="gallery">
+                    <div class="scrollbar">
+                        <div class="overflow"></div>
+                        <img class="gallery-image" src="imgs/burgstadt/1.jpg">
+                        <img class="gallery-image" src="imgs/burgstadt/2.jpg">
+                        <img class="gallery-image" src="imgs/burgstadt/3.jpg">
+                        <img class="gallery-image" src="imgs/burgstadt/4.jpg">
+                        <img class="gallery-image" src="imgs/burgstadt/5.jpg">
+                        <img class="gallery-image" src="imgs/burgstadt/6.jpg">
+                        <div class="overflow"></div>
+                    </div>
+                    <div class="flex gallery-gradient">
+                        <div class="flex-center" onclick="goTo('burgstadt', -1)"><img src="imgs/arrow-left.png"></div>
+                        <div class="gallery-image flex-auto" style="padding: 0px 10px 0px 10px"></div>
+                        <div class="flex-center" onclick="goTo('burgstadt', 1)"><img src="imgs/arrow-right.png"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div map="shapes">
+                <div class="text-shapes">
+                    <span>S</span>
+                    <span>h</span>
+                    <span>a</span>
+                    <span>p</span>
+                    <span>e</span>
+                    <span>s</span>
+                </div>
+
+                <p>In a mysterious place, two islands for two teams face eachother a Dodgeball deathmatch, with the changing map every round on different color, shape, layout, and maybe even a gimmik.</p>
+
+                <div class="border-black"></div>
+
+                <div class="gallery">
+                    <div class="scrollbar">
+                        <div class="overflow"></div>
+                        <img class="gallery-image" src="imgs/shapes/1.jpg">
+                        <img class="gallery-image" src="imgs/shapes/2.jpg">
+                        <img class="gallery-image" src="imgs/shapes/3.jpg">
+                        <img class="gallery-image" src="imgs/shapes/4.jpg">
+                        <img class="gallery-image" src="imgs/shapes/5.jpg">
+                        <img class="gallery-image" src="imgs/shapes/6.jpg">
+                        <img class="gallery-image" src="imgs/shapes/7.jpg">
+                        <img class="gallery-image" src="imgs/shapes/8.jpg">
+                        <img class="gallery-image" src="imgs/shapes/9.jpg">
+                        <img class="gallery-image" src="imgs/shapes/10.jpg">
+                        <div class="overflow"></div>
+                    </div>
+                    <div class="flex gallery-gradient">
+                        <div class="flex-center" onclick="goTo('shapes', -1)"><img src="imgs/arrow-left.png"></div>
+                        <div class="gallery-image flex-auto" style="padding: 0px 10px 0px 10px"></div>
+                        <div class="flex-center" onclick="goTo('shapes', 1)"><img src="imgs/arrow-right.png"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: https://ogp.me/ns#">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Odd One Out</title>
+
+    <meta property="og:site_name" content="FortyTwoFortyTwo"/>
+
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/oddout.css">
+    <script src="js/oddout.js"></script>
+</head>
+
+<body class="background-main" style="padding: 0">
+    <div class="flex flex-vertical" style="height: 100vh">
+        <div class="flex-auto">
+            <h1 class="flex-center oddone-title">
+                <div class="flex-auto">Odd</div>
+                <div class="flex-auto">One</div>
+                <div class="flex-auto">Out</div>
+            </h1>
+        </div>
+        <div class="flex" style="margin: 40px 5%">
+            <div class="box" style="margin: 0 auto; padding: 0; max-width: 120vh;">
+                <div id="display" class="flex-center flex-vertical" status="pause">
+                    <!-- JS will add stuffs here -->
+                </div>
+            </div>
+        </div>
+        <div class="flex-auto">
+            <div id="timer" class="box" status="start" onclick="start(this)">
+                <h1>Start Game</h1>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

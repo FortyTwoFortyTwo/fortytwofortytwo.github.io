@@ -1,0 +1,194 @@
+:root {
+    --background-pause-light: #888;
+    --background-pause-dark: #666;
+
+    --background-pending-angle: 135deg;
+    --background-pending-width: 50px;
+    --background-pending-light: #e6961e;
+    --background-pending-dark: #e6751e;
+
+    --background-correct-light: #32a852;
+    --background-correct-dark: #138732;
+    --background-correct-width: 150px;
+
+    --background-incorrect-light: #ba2406;
+    --background-incorrect-dark: #9c1e05;
+    --background-incorrect-width: 150px;
+
+    --correct-shadow-width: 1px;
+    --correct-shadow-blur: 2px;
+}
+
+/* STATUS BACKGROUND */
+
+[status="pause"] {
+    background: radial-gradient(transparent 41%, var(--background-pause-light) 42%),
+        linear-gradient(to bottom, var(--background-pause-dark) 35%, transparent 35%, transparent 65%, var(--background-pause-dark) 65%),
+        linear-gradient(to right, var(--background-pause-dark) 35%, var(--background-pause-light) 35%, var(--background-pause-light) 45%, var(--background-pause-dark) 45%, var(--background-pause-dark) 55%, var(--background-pause-light) 55%, var(--background-pause-light) 65%, var(--background-pause-dark) 65%);
+
+    background-size: 200px 200px;
+    background-position: 50% calc(50% - 100px);
+}
+
+@keyframes background-pending {
+    0% {
+        background-position-y: 0px;
+    }
+    100% {
+        background-position-y: calc(calc(var(--background-pending-width) * 2) /sin(var(--background-pending-angle)));
+    }
+}
+
+[status="pending"] {
+    background: repeating-linear-gradient(
+        var(--background-pending-angle),
+        var(--background-pending-light) 0px,
+        var(--background-pending-light) var(--background-pending-width),
+        var(--background-pending-dark) var(--background-pending-width),
+        var(--background-pending-dark) calc(var(--background-pending-width) * 2));
+
+    background-size: 100% calc(calc(var(--background-pending-width) * 2) /sin(var(--background-pending-angle)));
+    animation: background-pending 5s linear infinite;
+}
+
+@keyframes background-correct {
+    0% {
+        background-position: 0px var(--background-correct-width);
+    }
+    100% {
+        background-position: var(--background-correct-width) 0px;
+    }
+}
+
+[status="correct"] {
+    background:
+        linear-gradient(45deg, var(--background-correct-light) 30%, transparent 30%, transparent 75%, var(--background-correct-light) 75%),    /* Cutting edges for right bend*/
+        linear-gradient(135deg, var(--background-correct-light) 45%, transparent 45%, transparent 60%, var(--background-correct-dark) 60%, var(--background-correct-dark) 70%, var(--background-correct-light) 70%),    /* Left bend */
+        linear-gradient(45deg, var(--background-correct-light) 30%, var(--background-correct-dark) 30%, var(--background-correct-dark) 40%, transparent 40%),    /* Right Bend */
+        var(--background-correct-light);
+
+    background-size: var(--background-correct-width) var(--background-correct-width);
+    animation: background-correct 5s linear infinite;
+}
+
+@keyframes background-incorrect {
+    0% {
+        background-position: var(--background-correct-width) 0px;
+    }
+    100% {
+        background-position: 0px var(--background-correct-width);
+    }
+}
+
+[status="incorrect"] {
+    background:
+        linear-gradient(45deg, var(--background-incorrect-light) 25%, transparent 25%, transparent 75%, var(--background-incorrect-light) 75%),
+        linear-gradient(135deg, var(--background-incorrect-light) 25%, transparent 25%, transparent 75%, var(--background-incorrect-light) 75%),
+        linear-gradient(45deg, transparent 45%, var(--background-incorrect-dark) 45%, var(--background-incorrect-dark) 55%, transparent 55%),
+        linear-gradient(135deg, transparent 45%, var(--background-incorrect-dark) 45%, var(--background-incorrect-dark) 55%, transparent 55%),
+        var(--background-incorrect-light);
+
+    background-size: var(--background-incorrect-width) var(--background-incorrect-width);
+    animation: background-incorrect 5s linear infinite;
+}
+
+/* TITLE */
+
+.oddone-title {
+    text-align: center;
+    color: var(--background-pending-light);
+}
+
+.oddone-title > div {
+    padding: 0px 10px;
+}
+
+.oddone-title > div:first-letter {
+    font-size: 4.5rem;
+    color: var(--background-correct-light);
+}
+
+.oddone-title > div:last-child:first-letter {
+    color: var(--background-incorrect-light);
+}
+
+/* DISPLAY */
+
+#display {
+    height: 100%;
+}
+
+.option-row {
+    flex: 1;
+    max-width: 100%;
+}
+
+.option {
+    aspect-ratio: 1 / 1;
+    width: 100%;
+    margin: min(30px, 3%);
+
+    filter: drop-shadow(0px 0px 4px black);
+}
+
+.spacer {
+    aspect-ratio: 1 / 2;
+    width: 50%;
+}
+
+.option > div {
+    width: 100%;
+    height: 100%;
+}
+
+.selectable {
+    cursor: pointer;
+}
+
+.selectable:hover {
+    filter: drop-shadow(0px 0px 10px black);
+}
+
+.correct {
+    filter: drop-shadow(var(--correct-shadow-width) 0px var(--correct-shadow-blur) white)
+        drop-shadow(calc(var(--correct-shadow-width) * -1) 0px var(--correct-shadow-blur) white)
+        drop-shadow(0px var(--correct-shadow-width) var(--correct-shadow-blur) white)
+        drop-shadow(0px calc(var(--correct-shadow-width) * -1) var(--correct-shadow-blur) white);
+}
+
+.incorrect {
+    opacity: 0.5;
+}
+
+/* TIMER */
+
+#timer {
+    margin-top: 0px;
+    padding-left: 30px;
+    padding-right: 30px;
+
+    min-width: 60px;
+    min-height: auto;
+    display: inline-block;
+}
+
+[status="start"] {
+    background: var(--background-correct-light);
+    cursor: pointer;
+}
+
+[status="start"]:hover {
+    background: var(--background-correct-dark);
+}
+
+[status="ongoing"] {
+    background: var(--background-pending-light);
+}
+
+[status="good"] {
+    background: var(--background-correct-light);
+}
+
+[status="end"] {
+    background: var(--background-incorrect-light);
+}
