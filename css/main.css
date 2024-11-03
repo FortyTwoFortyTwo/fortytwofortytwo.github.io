@@ -75,10 +75,10 @@ p {
     padding: 20px 0px 20px 0px;
 
     background:
-        repeating-linear-gradient(15deg, transparent 0px, transparent 100px, var(--background-dark) 100px, var(--background-dark) 200px),
-        /*repeating-linear-gradient(45deg, transparent 0px, transparent 57.75px, var(--background-dark) 57.75px, var(--background-dark) 115.5px),*/
-        repeating-linear-gradient(75deg, transparent 0px, transparent 100px, var(--background-dark) 100px, var(--background-dark) 200px),
-        var(--background-light);
+        repeating-linear-gradient(10deg, transparent 0px, transparent 100px, #0003 100px, #0003 200px),
+        repeating-linear-gradient(80deg, transparent 0px, transparent 100px, #c77116 100px, #c77116 200px),
+        repeating-linear-gradient(45deg, transparent 0px, transparent 61px, #0001 61px, #0002 122.1px),
+        rgb(232, 150, 49);
 }
 
 .header {
