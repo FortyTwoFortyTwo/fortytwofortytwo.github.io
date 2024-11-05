@@ -1,10 +1,9 @@
 :root {
-    --background-light: #34a8eb;
-    --background-dark: rgba(26, 129, 189, 0.55);
-    --background-orange: #c2703c;
+    --background-box: #21777b;
 
     --box-spacer: 40px;
-    --box-border-width: 10px;
+    --box-border-width: 4px;
+    --box-border-color: #00414d;
 
     --tf2-light: #9d5322;
     --tf2-dark: #262425;
@@ -129,8 +128,9 @@ p {
 
 .box {
     padding: 0px 20px;
-    border: var(--box-border-width) solid;
-    border-radius: 50px;
+    border: var(--box-border-width) solid var(--box-border-color);
+    border-radius: 20px;
+    box-shadow: 1px 6px 15px black;
     overflow: hidden;
 }
 
@@ -181,8 +181,8 @@ p {
 
 /* MAPS */
 
-.background-orange {
-    background: var(--background-orange);
+.background-box {
+    background: var(--background-box);
 }
 
 .maps {
@@ -192,7 +192,7 @@ p {
 }
 
 .maps h1 {
-    color: #6f8700;
+    color: #5b9502;
 }
 
 .map {
@@ -361,7 +361,7 @@ p {
 .border-black {
     width: 100%;
     height: var(--box-border-width);
-    background: black;
+    background: var(--box-border-color);
 }
 
 .before {
