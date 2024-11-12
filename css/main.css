@@ -1,4 +1,7 @@
 :root {
+    --background-color-light: #e89631;
+    --background-color-dark: #c77116;
+    --background-color-verydark: #994f00;
     --background-box: #21777b;
 
     --box-spacer: 40px;
@@ -40,6 +43,7 @@ body {
     min-height: 100vh;
     margin: 0;
 
+    color: #ddd;
     font: 16px Helvetica, sans-serif;
     font-size: 1.2rem;
     text-align: center;
@@ -64,20 +68,23 @@ a:hover {
     color: mediumpurple;
 }
 
-p {
-    color: #ddd;
-}
-
 /* MAIN */
 
 .background-main {
     padding: 20px 0px 20px 0px;
 
+    background: radial-gradient(at top right, var(--background-color-dark), transparent 20%),
+                radial-gradient(at bottom right, var(--background-color-dark), transparent 20%),
+                radial-gradient(at left, var(--background-color-dark), transparent 20%),
+                linear-gradient(var(--background-color-light), var(--background-color-dark), var(--background-color-light));
+    background-size: 100vw 100vw;
+/*
     background:
         repeating-linear-gradient(10deg, transparent 0px, transparent 100px, #0003 100px, #0003 200px),
         repeating-linear-gradient(80deg, transparent 0px, transparent 100px, #c77116 100px, #c77116 200px),
         repeating-linear-gradient(45deg, transparent 0px, transparent 61px, #0001 61px, #0002 122.1px),
         rgb(232, 150, 49);
+*/
 }
 
 .header {
@@ -137,6 +144,21 @@ p {
 .box-spacer {
     width: var(--box-spacer);
     height: var(--box-spacer);
+}
+
+.box-blur {
+    filter: drop-shadow(0 0 5px var(--background-color-verydark));
+}
+
+/* GAMES */
+
+.background-oddout {
+    --background-dark: rgba(26, 129, 189, 0.55);
+
+    background:
+        repeating-linear-gradient(15deg, transparent 0px, transparent 100px, var(--background-dark) 100px, var(--background-dark) 200px),
+        repeating-linear-gradient(75deg, transparent 0px, transparent 100px, var(--background-dark) 100px, var(--background-dark) 200px),
+        #34a8eb;
 }
 
 /* REDSUN */
