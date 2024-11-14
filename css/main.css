@@ -4,7 +4,10 @@
     --background-color-verydark: #994f00;
     --background-box: #21777b;
 
-    --box-spacer: 40px;
+    --text-color-light: #c97f00;
+    --text-color-dark: #c94d00;
+
+    --box-spacer: 60px;
     --box-border-width: 4px;
     --box-border-color: #00414d;
 
@@ -58,6 +61,16 @@ h1 {
     margin: 5px auto;
 }
 
+h2 {
+    color: var(--text-color-dark);
+
+    text-shadow: 1px 1px 0px black,
+        -1px 1px 0px black,
+        1px -1px 0px black,
+        -1px -1px 0px black,
+        4px 2px 0px black;
+}
+
 a {
     color: royalblue;
     text-decoration: none;
@@ -92,8 +105,8 @@ a:hover {
 
     margin-top: 50px;
     margin-bottom: 50px;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding-top: 50px;
+    padding-bottom: 70px;
 
     text-align: center;
     position: relative;
@@ -115,11 +128,11 @@ a:hover {
 }
 
 @keyframes title {
-    0%   {color: #c94d00;}
-    30%   {color: #c94d00;}
-    50%  {color: #c97f00;}
-    80%  {color: #c97f00;}
-    100%   {color: #c94d00;}
+    0%   {color: var(--text-color-dark);}
+    30%   {color: var(--text-color-dark);}
+    50%  {color: var(--text-color-light);}
+    80%  {color: var(--text-color-light);}
+    100%   {color: var(--text-color-dark);}
 }
 
 .title-1 {
