@@ -3,8 +3,10 @@ const size_row = size * size; // Size for one of the whole row/col
 const size_square = 100;  // Size of the white squares
 const size_border = 10;   // Size of the border surrounding it
 const size_each = size_square + size_border;  // Size of white square and one side of border together
+const symbols_start = 40;   // number of symbols to display at the start;
 
 var symbols_grid;   // a grid to store symbols
+var symbols_shown;  // Same structure as symbols_grid, just a boolean on whenever if a symbol has been shown
 var symbols_list = []; // List of symbols to display
 var cxt;    // the canvas context to draw
 var selectedSquare = null;    // coords on the selected square
@@ -24,6 +26,7 @@ function draw() {
     }
   }
 
+  symbols_shown = structuredClone(symbols_grid);
   symbols_list = [];
 
   // Add in numbers
@@ -57,6 +60,8 @@ function draw() {
   ctx.fillStyle = "black";
   ctx.fillRect(0, 0, size_whole, size_whole);
 
+  var possible_spots = [];
+
   for (var sx = 0; sx < size; sx++) {
     for (var sy = 0; sy < size; sy++) {
       var x = sx * size;
@@ -71,10 +76,22 @@ function draw() {
         for (var gy = 0; gy < size; gy++) {
           // Draw a white square
           drawSquare(sx, sy, gx, gy, "white");
-          //drawText(sx, sy, gx, gy);
+          possible_spots.push({
+            sx: sx,
+            sy: sy,
+            gx: gx,
+            gy: gy,
+          });
         }
       }
     }
+  }
+
+  // Select some random spots to start reveal, with the number in loop as the amount to start
+  for (var i = 0; i < symbols_start; i++) {
+    var spot = getRandomItemInArray(possible_spots);
+    removeItemInArray(possible_spots, spot);
+    drawText(spot.sx, spot.sy, spot.gx, spot.gy);
   }
 
   canvas.addEventListener('click', function(e) {
@@ -92,21 +109,26 @@ function draw() {
 
     var sx = Math.floor(x / size);
     var sy = Math.floor(y / size);
+    var gx = x - (sx * size);
+    var gy = y - (sy * size);
 
     // check if its out of bounds, if its the case then just ignore
     if (sx < 0 || sx >= size || sy < 0 || sy >= size)
+        return;
+
+    // Symbol already shown, prevent selecting it
+    if (symbols_shown[sx][sy][gx][gy])
         return;
 
     // Set selectedSquare variable so it can be set back to white later when done
     selectedSquare = {
         sx: sx,
         sy: sy,
-        gx: x - (sx * size),
-        gy: y - (sy * size),
+        gx: gx,
+        gy: gy,
     }
 
     drawSquare(selectedSquare.sx, selectedSquare.sy, selectedSquare.gx, selectedSquare.gy, "gold");
-    //drawText(sx, sy, gx, gy);
   }, false);
 
   document.addEventListener("keypress", onKeyPressed);
@@ -121,13 +143,15 @@ function drawSquare(sx, sy, gx, gy, color) {
     ctx.fillRect(x * size_each + size_border, y * size_each + size_border, size_square, size_square);
 }
 
-function drawText(sx, sy, gx, gy) {
+function drawText(sx, sy, gx, gy, color = "black") {
     var symbol = symbols_grid[sx][sy][gx][gy];
     var x = (sx * size) + gx;
     var y = (sy * size) + gy;
 
+    symbols_shown[sx][sy][gx][gy] = true;
+
     // Text
-    ctx.fillStyle = "black";
+    ctx.fillStyle = color;
     ctx.font = size_square + "px sans-serif";
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
@@ -143,11 +167,11 @@ function onKeyPressed(event) {
     if (symbols_list.indexOf(key) == -1)    // If the key pressed isnt in any of the possible symbols, ignore
         return;
 
-    symbols_grid[selectedSquare.sx][selectedSquare.sy][selectedSquare.gx][selectedSquare.gy] = key;
+    var color = symbols_grid[selectedSquare.sx][selectedSquare.sy][selectedSquare.gx][selectedSquare.gy] == key ? "deepskyblue" : "red";
 
     // Clear the square back to white before drawing the text
     drawSquare(selectedSquare.sx, selectedSquare.sy, selectedSquare.gx, selectedSquare.gy, "white");
-    drawText(selectedSquare.sx, selectedSquare.sy, selectedSquare.gx, selectedSquare.gy);
+    drawText(selectedSquare.sx, selectedSquare.sy, selectedSquare.gx, selectedSquare.gy, color);
     selectedSquare = null;
 }
 
