@@ -3,10 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Sudoku game</title>
+
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/sudoku.css">
+
   <script src="js/sudoku.js"></script>
 </head>
 <body onload="draw()">
-  <canvas id="sudoku" width="1000" height="1000"></canvas>
+  <div class="sudoku-whole">
+    <h1>Sudoku</h1>
+    <div class="sudoku-main">
+      <canvas id="sudoku"></canvas>
+    </div>
+  </div>
 </body>
 </html>

@@ -56,6 +56,10 @@ function draw() {
 
   var size_whole = size_row * size_each + size_border;
 
+  // Set the size of the canvas that needs to be drawn
+  canvas.setAttribute("width", size_whole);
+  canvas.setAttribute("height", size_whole);
+
   // Black background, for the black border
   ctx.fillStyle = "black";
   ctx.fillRect(0, 0, size_whole, size_whole);
