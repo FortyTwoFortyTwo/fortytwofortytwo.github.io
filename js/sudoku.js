@@ -105,8 +105,10 @@ function draw() {
         selectedSquare = null;
     }
 
-    var x = e.offsetX;
-    var y = e.offsetY;
+    // Take into account that canvas could be scaled up or down from screen size
+    var bbox = canvas.getBoundingClientRect();
+    var x = e.offsetX / bbox.width * canvas.getAttribute("width");
+    var y = e.offsetY / bbox.height * canvas.getAttribute("height");
 
     x = Math.floor(x / size_each);
     y = Math.floor(y / size_each);
