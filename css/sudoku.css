@@ -1,8 +1,40 @@
 :root {
+    --sudoku-background-light: #966dbf;
+    --sudoku-background-dark: #6d4991;
+    --sudoku-background-line-light: #0002;
+    --sudoku-background-line-dark: #0004;
+    --sudoku-background-line-width: 15px;
+    --sudoku-background-line-spacer: 80px;
 }
 
-body {
-    margin: 0;
+.background-sudoku {
+    /* Maybe an image would be better for this instead... */
+    background:
+        repeating-linear-gradient(0deg,
+        var(--sudoku-background-line-light) 0px,
+        var(--sudoku-background-line-light) var(--sudoku-background-line-width),
+        transparent var(--sudoku-background-line-width),
+        transparent var(--sudoku-background-line-spacer),
+        var(--sudoku-background-line-dark) var(--sudoku-background-line-spacer),
+        var(--sudoku-background-line-dark) calc(var(--sudoku-background-line-width) + var(--sudoku-background-line-spacer)),
+        transparent calc(var(--sudoku-background-line-width) + var(--sudoku-background-line-spacer)),
+        transparent calc(var(--sudoku-background-line-spacer) * 2)
+        ),
+        repeating-linear-gradient(90deg,
+        var(--sudoku-background-line-light) 0px,
+        var(--sudoku-background-line-light) var(--sudoku-background-line-width),
+        transparent var(--sudoku-background-line-width),
+        transparent var(--sudoku-background-line-spacer),
+        var(--sudoku-background-line-dark) var(--sudoku-background-line-spacer),
+        var(--sudoku-background-line-dark) calc(var(--sudoku-background-line-width) + var(--sudoku-background-line-spacer)),
+        transparent calc(var(--sudoku-background-line-width) + var(--sudoku-background-line-spacer)),
+        transparent calc(var(--sudoku-background-line-spacer) * 2)
+        ),
+        var(--sudoku-background-light);
+}
+
+.sudoku-title {
+    color: var(--sudoku-background-dark);
 }
 
 .sudoku-main {
