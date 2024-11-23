@@ -5,6 +5,32 @@
     --sudoku-background-line-dark: #0004;
     --sudoku-background-line-width: 15px;
     --sudoku-background-line-spacer: 80px;
+
+    --sudoku-main-margin: 40px;
+}
+
+.flex-auto-horizonal {
+    flex: 0 0 auto !important;
+    overflow: hidden;
+    height: 100%;
+}
+
+@media (max-aspect-ratio: 1.35 / 1) {
+    .flex-sudoku {
+        flex-direction: column;
+    }
+
+    .flex-sudoku > div {
+        width: 100%;
+    }
+
+    .flex-auto-horizonal {
+        flex: 1 0 0% !important;
+    }
+
+    .flex-auto-vertical {
+        flex: 0 0 auto !important;
+    }
 }
 
 .background-sudoku {
@@ -38,9 +64,9 @@
 }
 
 .sudoku-main {
-    margin: 40px 5%;
-    overflow: hidden;
-    align-self: center;
+    width: calc(100% - calc(var(--sudoku-main-margin) * 2));
+    height: calc(100% - calc(var(--sudoku-main-margin) * 2));
+    margin: var(--sudoku-main-margin);
 }
 
 canvas {

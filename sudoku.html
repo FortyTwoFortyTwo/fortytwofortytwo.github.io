@@ -12,13 +12,17 @@
   <script src="js/sudoku.js"></script>
 </head>
 <body class="background-sudoku" onload="draw()">
-  <div class="flex flex-vertical" style="height: 100vh">
-    <div class="flex-auto">
-      <h1 class="sudoku-title">Sudoku</h1>
-      <p>Select the square, then enter the number by keyboard to submit it.</p>
+  <div class="flex flex-sudoku" style="height: 100vh">
+    <div class="flex-auto-vertical flex-center">
+      <div>
+        <h1 class="sudoku-title">Sudoku</h1>
+        <p>Select the square, then enter the number by keyboard to submit it.</p>
+      </div>
     </div>
-    <div class="flex sudoku-main">
-      <canvas id="sudoku"></canvas>
+    <div class="flex-auto-horizonal">
+      <div class="sudoku-main flex-center">
+        <canvas id="sudoku"></canvas>
+      </div>
     </div>
   </div>
 </body>
