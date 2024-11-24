@@ -1,7 +1,6 @@
 :root {
     --background-color-light: #e89631;
     --background-color-dark: #c77116;
-    --background-color-verydark: #994f00;
     --background-box: #21777b;
 
     --text-color-light: #c97f00;
@@ -10,6 +9,7 @@
     --box-spacer: 60px;
     --box-border-width: 4px;
     --box-border-color: #00414d;
+    --box-color-shadow: #000000aa;
 
     --tf2-light: #9d5322;
     --tf2-dark: #262425;
@@ -160,7 +160,7 @@ a:hover {
 }
 
 .box-blur {
-    filter: drop-shadow(0 0 5px var(--background-color-verydark));
+    filter: drop-shadow(0 0 5px var(--box-color-shadow));
 }
 
 /* GAMES */

@@ -173,7 +173,7 @@ function onKeyPressed(event) {
     if (symbols_list.indexOf(key) == -1)    // If the key pressed isnt in any of the possible symbols, ignore
         return;
 
-    var color = symbols_grid[selectedSquare.sx][selectedSquare.sy][selectedSquare.gx][selectedSquare.gy] == key ? "deepskyblue" : "red";
+    var color = symbols_grid[selectedSquare.sx][selectedSquare.sy][selectedSquare.gx][selectedSquare.gy] == key ? "limegreen" : "orangered";
 
     // Clear the square back to white before drawing the text
     drawSquare(selectedSquare.sx, selectedSquare.sy, selectedSquare.gx, selectedSquare.gy, "white");

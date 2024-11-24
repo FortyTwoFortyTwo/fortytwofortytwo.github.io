@@ -1,8 +1,12 @@
 :root {
-    --sudoku-background-light: #966dbf;
-    --sudoku-background-dark: #6d4991;
+    --sudoku-background: #966dbf;
 
     --sudoku-main-margin: 40px;
+
+    /* Same values as in sudoku.js */
+    --sudoku-color-correct: limegreen;
+    --sudoku-color-incorrect: orangered;
+    --sudoku-color-text: #59bfdf;
 }
 
 .flex-auto-horizonal {
@@ -31,12 +35,12 @@
 
 .background-sudoku {
     /* Maybe an image would be better for this instead... */
-    background: url('../imgs/sudoku.png') var(--sudoku-background-light);
+    background: url('../imgs/sudoku.png') var(--sudoku-background);
     background-position: center;
 }
 
 .sudoku-title {
-    color: var(--sudoku-background-dark);
+    color: var(--sudoku-color-text);
 }
 
 .sudoku-main {
@@ -48,4 +52,12 @@
 canvas {
     max-width: 100%;
     max-height: 100%;
+}
+
+.sudoku-color-correct {
+    color: var(--sudoku-color-correct);
+}
+
+.sudoku-color-incorrect {
+    color: var(--sudoku-color-incorrect);
 }
