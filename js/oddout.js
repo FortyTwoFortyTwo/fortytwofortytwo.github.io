@@ -10,7 +10,7 @@ Some ideas on what could be added to it:
 
 */
 
-var colors = [
+let colors = [
     "#bf0000",  // Red
     "#965106",  // Brown
     "#ff8d00",  // Orange
@@ -24,7 +24,7 @@ var colors = [
     "#f24be7",  // Pink
 ];
 
-var polygons = [
+let polygons = [
     "0% 0%, 30% 0%, 30% 35%, 70% 35%, 70% 0%, 100% 0%, 100% 100%, 70% 100%, 70% 65%, 30% 65%, 30% 100%, 0% 100%", // H
     "0% 0%, 30% 0%, 30% 70%, 100% 70%, 100% 100%, 0% 100%", // L
     "0% 0%, 100% 0%, 100% 30%, 65% 30%, 65% 100%, 35% 100%, 35% 30%, 0% 30%", // T
@@ -42,9 +42,9 @@ const OPTIONS_DATA = {
 }
 
 const TIME_TRANSITION = 800;
-var OPTIONS_COUNT;
-var oddout_id = null;
-var timer;
+let OPTIONS_COUNT;
+let oddout_id = null;
+let timer;
 
 /* START */
 
@@ -58,30 +58,30 @@ function start(element) {
 
 function startChallenge() {
     // Clear any options left over
-    var options = document.querySelectorAll("#display > div");
-    for (var i = 0; i < options.length; i++)
-        options[i].remove();
+    let divs = document.querySelectorAll("#display > div");
+    for (let i = 0; i < divs.length; i++)
+        divs[i].remove();
 
     document.querySelector("#display").setAttribute("status", "pending");
     document.querySelector("#timer").setAttribute("status", "ongoing");
     displayTimer(10);
 
-    var main = document.querySelector('#display');
+    let main = document.querySelector('#display');
 
-    var options = [];
-    var oddout_data = {};
+    let options = [];
+    let oddout_data = {};
 
-    for (var key in OPTIONS_DATA) {
+    for (let key in OPTIONS_DATA) {
         shuffle(OPTIONS_DATA[key]);
         options.push(key);
     }
 
     shuffle(options);
-    var oddone = options[0];
-    var display_data = {};
-    var display_indexs = {};
+    let oddone = options[0];
+    let display_data = {};
+    let display_indexs = {};
 
-    for (var key in OPTIONS_DATA) {
+    for (let key in OPTIONS_DATA) {
         display_indexs[key] = 0;
 
         if (key == oddone) {
@@ -92,20 +92,20 @@ function startChallenge() {
         }
     }
 
-    var results = [];
-    var elements = [];
+    let results = [];
+    let elements = [];
 
-    for (var max = OPTIONS_COUNT; max > 0; max--) {
+    for (let max = OPTIONS_COUNT; max > 0; max--) {
         // Reset indexs
-        for (var key in display_indexs)
+        for (let key in display_indexs)
             display_indexs[key] = -1;
 
         do {
             // Increase indexs for next attempt
 
-            var id = [];
-            var unique = false;
-            for (var key in display_indexs) {
+            let id = [];
+            let unique = false;
+            for (let key in display_indexs) {
                 if (!unique) {
                     display_indexs[key]++;
                     if (!unique && display_indexs[key] >= max)
@@ -126,12 +126,12 @@ function startChallenge() {
 
             results.push(id);
 
-            var data = {};
-            for (var key in display_data)
+            let data = {};
+            for (let key in display_data)
                 data[key] = popArray(display_data[key], display_indexs[key]);
 
-            var oddout = true;
-            for (var key in oddout_data) {
+            let oddout = true;
+            for (let key in oddout_data) {
                 if (data[key] == oddout_data[key])
                     continue;
 
@@ -139,7 +139,7 @@ function startChallenge() {
                 break;
             }
 
-            var element = createElement(data);
+            let element = createElement(data);
             elements.push(element);
 
             if (oddout)
@@ -153,7 +153,7 @@ function startChallenge() {
     shuffle(elements);
 
     // Figure out how many rows to create
-    var rows_count = Math.floor(Math.sqrt(OPTIONS_COUNT));
+    let rows_count = Math.floor(Math.sqrt(OPTIONS_COUNT));
     do
     {
         if (OPTIONS_COUNT / rows_count == Math.round(OPTIONS_COUNT / rows_count));
@@ -166,13 +166,13 @@ function startChallenge() {
     if (rows_count == 0)
         rows_count = Math.floor(Math.sqrt(OPTIONS_COUNT));
 
-    var max_col = Math.ceil(OPTIONS_COUNT / rows_count);
-    var row = null;
-    var rows = [];
+    let max_col = Math.ceil(OPTIONS_COUNT / rows_count);
+    let row = null;
+    let rows = [];
 
-    for (var i = 0; i < elements.length; i++) {
+    for (let i = 0; i < elements.length; i++) {
         // Math is weird here, for a 10-options we want to have 3-4-3 rows
-        var next_break = rows.length / rows_count * OPTIONS_COUNT;
+        let next_break = rows.length / rows_count * OPTIONS_COUNT;
         if (next_break - Math.floor(next_break) < 0.5)
             next_break = Math.floor(next_break);
         else
@@ -200,7 +200,7 @@ function addSpacer(row, max_col) {
     if (!row || row.childElementCount >= max_col)
         return;
 
-    var spacer = document.createElement("div");
+    let spacer = document.createElement("div");
     spacer.classList.add("spacer");
     row.append(spacer);
 
@@ -210,13 +210,13 @@ function addSpacer(row, max_col) {
 }
 
 function createOddOutList() {
-    var list = [];
+    let list = [];
     list.push(1);  // THE odd one out
-    var remaining = OPTIONS_COUNT - 1;
+    let remaining = OPTIONS_COUNT - 1;
 
     // Fill the rest with more numbers, don't give out any other 1s
     while (remaining > 0) {
-        var count = null;
+        let count = null;
         if (remaining >= 6) {
             count = getRandomInt(2, 4);
         } else if (remaining >= 5 || (remaining >= 4 && getRandomInt(0, 1))) {
@@ -234,13 +234,13 @@ function createOddOutList() {
 
 function createNormalList() {
 
-    var one_count = 0;
+    let one_count = 0;
 
-    var list = [];
-    var remaining = OPTIONS_COUNT;
+    let list = [];
+    let remaining = OPTIONS_COUNT;
 
     while (remaining > 0) {
-        var count = null;
+        let count = null;
         if (OPTIONS_COUNT <= 5)
             count = getRandomInt(1, Math.ceil(OPTIONS_COUNT / 2));  // Don't want all options to have same result
         else if (remaining >= 4)
@@ -271,19 +271,19 @@ function createOptionsList(options, counts) {
     counts.sort();
     counts.reverse();
 
-    var list = [];
+    let list = [];
 
-    for (var i = 0; i < counts.length; i++)
-        for (var count = 0; count < counts[i]; count++)
+    for (let i = 0; i < counts.length; i++)
+        for (let count = 0; count < counts[i]; count++)
             list.push(options[i]);
 
     return list;
 }
 
-var next_id = 0;
+let next_id = 0;
 
 function createElement(data) {
-    var inner = document.createElement("div");
+    let inner = document.createElement("div");
     inner.style.backgroundColor = data["colors"];
     inner.style.clipPath = "polygon(" + data["polygons"] + ")";
 
@@ -296,7 +296,7 @@ function createElement(data) {
         easing: "cubic-bezier(0, 0, 0.1, 1)",  // similar to ease-out
     });
 
-    var element = document.createElement("div");
+    let element = document.createElement("div");
     element.classList.add("option", "selectable", "flex-center");
     element.setAttribute("onclick", "onSelected(this)");
     element.append(inner);
@@ -318,8 +318,8 @@ function displayTimer(time) {
         timer = setTimeout(displayTimer, 1000, time - 1);
 
         if (time <= 3) {
-            var elements = [document.querySelector("#display"), document.querySelector("#timer")];
-            for (var i = 0; i < elements.length; i++) {
+            let elements = [document.querySelector("#display"), document.querySelector("#timer")];
+            for (let i = 0; i < elements.length; i++) {
                 elements[i].style.setProperty("--background-pending-light", "#e6671e");
                 elements[i].style.setProperty("--background-pending-dark", "#e6491e");
             }
@@ -330,8 +330,8 @@ function displayTimer(time) {
 }
 
 function clearTimerStyle() {
-    var elements = [document.querySelector("#display"), document.querySelector("#timer")];
-    for (var i = 0; i < elements.length; i++) {
+    let elements = [document.querySelector("#display"), document.querySelector("#timer")];
+    for (let i = 0; i < elements.length; i++) {
         elements[i].style.removeProperty("--background-pending-light");
         elements[i].style.removeProperty("--background-pending-dark");
     }
@@ -343,8 +343,8 @@ function onSelected(element) {
 
     clearInterval(timer);
 
-    var elements = document.querySelectorAll(".selectable");
-    for (var i = 0; i < elements.length; i++) {
+    let elements = document.querySelectorAll(".selectable");
+    for (let i = 0; i < elements.length; i++) {
         elements[i].classList.remove("selectable");
 
         if (elements[i].getAttribute("id") == oddout_id)
@@ -365,8 +365,8 @@ function onSelected(element) {
 }
 
 function endChallenge() {
-    var inners = document.querySelectorAll(".option > div");
-    for (var i = 0; i < inners.length; i++) {
+    let inners = document.querySelectorAll(".option > div");
+    for (let i = 0; i < inners.length; i++) {
         inners[i].style.width = "0%";
         inners[i].style.height = "0%";
         inners[i].animate([
@@ -406,7 +406,7 @@ function shuffle(array) {
 };
 
 function popArray(array, index) {
-    var value = array[index];
+    let value = array[index];
     array.splice(index, 1);
     return value;
 }

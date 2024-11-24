@@ -5,22 +5,22 @@ const size_border = 10;   // Size of the border surrounding it
 const size_each = size_square + size_border;  // Size of white square and one side of border together
 const symbols_start = 40;   // number of symbols to display at the start;
 
-var symbols_grid;   // a grid to store symbols
-var symbols_shown;  // Same structure as symbols_grid, just a boolean on whenever if a symbol has been shown
-var symbols_list = []; // List of symbols to display
-var cxt;    // the canvas context to draw
-var selectedSquare = null;    // coords on the selected square
+let symbols_grid;   // a grid to store symbols
+let symbols_shown;  // Same structure as symbols_grid, just a boolean on whenever if a symbol has been shown
+let symbols_list = []; // List of symbols to display
+let cxt;    // the canvas context to draw
+let selectedSquare = null;    // coords on the selected square
 
-var timer = null;
-var timer_count = 0;
-var incorrect_count = 0;
+let timer = null;
+let timer_count = 0;
+let incorrect_count = 0;
 
 document.addEventListener("DOMContentLoaded", function() {
     timer = setInterval(function() {
         timer_count++;
 
-        var minutes = Math.floor(timer_count / 60);
-        var seconds = timer_count % 60;
+        let minutes = Math.floor(timer_count / 60);
+        let seconds = timer_count % 60;
 
         document.getElementById("sudoku-timer").textContent = minutes + ":" + String(seconds).padStart(2, "0");
     }, 1000);
@@ -36,15 +36,15 @@ function endTimer() {
 }
 
 function draw() {
-  // grid variable would be structured as this:
+  // grid letiable would be structured as this:
   // symbols_grid[sx][sy][gx][gy]
   // sx and sy as a section, gx and gy as a position inside of one of the section
   symbols_grid = new Array(size);   // creating [sx]
-  for (var sx = 0; sx < size; sx++) {
+  for (let sx = 0; sx < size; sx++) {
     symbols_grid[sx] = new Array(size); // creating [sy]
-    for (var sy = 0; sy < size; sy++) {
+    for (let sy = 0; sy < size; sy++) {
       symbols_grid[sx][sy] = new Array(size);   // creating [gx]
-      for (var gx = 0; gx < size; gx++) {
+      for (let gx = 0; gx < size; gx++) {
         symbols_grid[sx][sy][gx] = new Array(size); // creating [gy]
       }
     }
@@ -59,14 +59,14 @@ function draw() {
 
   if (size != 5) {  // if size is 5, just go with alphabet for A-Y
       const numbers_max = size_row < 9 ? size_row : 9;
-      for (var i = 0; i < numbers_max; i++)
+      for (let i = 0; i < numbers_max; i++)
         symbols_list.push((i + 1).toString());
   }
 
   // Add in alphabets
   const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   const alphabet_max = size_row - symbols_list.length;
-  for (var i = 0; i < alphabet_max; i++)
+  for (let i = 0; i < alphabet_max; i++)
     symbols_list.push(alphabet[i]);
 
   if (!rollSymbols()) {
@@ -78,7 +78,7 @@ function draw() {
   const canvas = document.getElementById("sudoku");
   ctx = canvas.getContext("2d");
 
-  var size_whole = size_row * size_each + size_border;
+  let size_whole = size_row * size_each + size_border;
 
   // Set the size of the canvas that needs to be drawn
   canvas.setAttribute("width", size_whole);
@@ -88,20 +88,20 @@ function draw() {
   ctx.fillStyle = "black";
   ctx.fillRect(0, 0, size_whole, size_whole);
 
-  var possible_spots = [];
+  let possible_spots = [];
 
-  for (var sx = 0; sx < size; sx++) {
-    for (var sy = 0; sy < size; sy++) {
-      var x = sx * size;
-      var y = sy * size;
-      var size_section = size * size_each - size_border;   // size of the section, not counting the black border
+  for (let sx = 0; sx < size; sx++) {
+    for (let sy = 0; sy < size; sy++) {
+      let x = sx * size;
+      let y = sy * size;
+      let size_section = size * size_each - size_border;   // size of the section, not counting the black border
 
       // Grey square, for the grey border
       ctx.fillStyle = "grey";
       ctx.fillRect(x * size_each + size_border, y * size_each + size_border, size_section, size_section);
 
-      for (var gx = 0; gx < size; gx++) {
-        for (var gy = 0; gy < size; gy++) {
+      for (let gx = 0; gx < size; gx++) {
+        for (let gy = 0; gy < size; gy++) {
           // Draw a white square
           drawSquare(sx, sy, gx, gy, "white");
           possible_spots.push({
@@ -116,8 +116,8 @@ function draw() {
   }
 
   // Select some random spots to start reveal, with the number in loop as the amount to start
-  for (var i = 0; i < symbols_start; i++) {
-    var spot = getRandomItemInArray(possible_spots);
+  for (let i = 0; i < symbols_start; i++) {
+    let spot = getRandomItemInArray(possible_spots);
     removeItemInArray(possible_spots, spot);
     drawText(spot.sx, spot.sy, spot.gx, spot.gy);
   }
@@ -130,17 +130,17 @@ function draw() {
     }
 
     // Take into account that canvas could be scaled up or down from screen size
-    var bbox = canvas.getBoundingClientRect();
-    var x = e.offsetX / bbox.width * canvas.getAttribute("width");
-    var y = e.offsetY / bbox.height * canvas.getAttribute("height");
+    let bbox = canvas.getBoundingClientRect();
+    let x = e.offsetX / bbox.width * canvas.getAttribute("width");
+    let y = e.offsetY / bbox.height * canvas.getAttribute("height");
 
     x = Math.floor(x / size_each);
     y = Math.floor(y / size_each);
 
-    var sx = Math.floor(x / size);
-    var sy = Math.floor(y / size);
-    var gx = x - (sx * size);
-    var gy = y - (sy * size);
+    let sx = Math.floor(x / size);
+    let sy = Math.floor(y / size);
+    let gx = x - (sx * size);
+    let gy = y - (sy * size);
 
     // check if its out of bounds, if its the case then just ignore
     if (sx < 0 || sx >= size || sy < 0 || sy >= size)
@@ -150,7 +150,7 @@ function draw() {
     if (symbols_shown[sx][sy][gx][gy])
         return;
 
-    // Set selectedSquare variable so it can be set back to white later when done
+    // Set selectedSquare letiable so it can be set back to white later when done
     selectedSquare = {
         sx: sx,
         sy: sy,
@@ -165,8 +165,8 @@ function draw() {
 }
 
 function drawSquare(sx, sy, gx, gy, color) {
-    var x = sx * size + gx;
-    var y = sy * size + gy;
+    let x = sx * size + gx;
+    let y = sy * size + gy;
 
     // draw a square at specific cords
     ctx.fillStyle = color;
@@ -174,9 +174,9 @@ function drawSquare(sx, sy, gx, gy, color) {
 }
 
 function drawText(sx, sy, gx, gy, color = "black") {
-    var symbol = symbols_grid[sx][sy][gx][gy];
-    var x = (sx * size) + gx;
-    var y = (sy * size) + gy;
+    let symbol = symbols_grid[sx][sy][gx][gy];
+    let x = (sx * size) + gx;
+    let y = (sy * size) + gy;
 
     symbols_shown[sx][sy][gx][gy] = true;
 
@@ -192,12 +192,12 @@ function onKeyPressed(event) {
     if (selectedSquare == null)
         return; // we dont have a selected square to try this, ignore
 
-    var key = event.key;
+    let key = event.key;
 
     if (symbols_list.indexOf(key) == -1)    // If the key pressed isnt in any of the possible symbols, ignore
         return;
 
-    var color = "limegreen";
+    let color = "limegreen";
     if (symbols_grid[selectedSquare.sx][selectedSquare.sy][selectedSquare.gx][selectedSquare.gy] != key) {
         color = "orangered";
         incorrect_count++;
@@ -209,10 +209,10 @@ function onKeyPressed(event) {
     selectedSquare = null;
 
     // Has all of the squares been selected?
-    for (var sx = 0; sx < size; sx++) {
-      for (var sy = 0; sy < size; sy++) {
-        for (var gx = 0; gx < size; gx++) {
-          for (var gy = 0; gy < size; gy++) {
+    for (let sx = 0; sx < size; sx++) {
+      for (let sy = 0; sy < size; sy++) {
+        for (let gx = 0; gx < size; gx++) {
+          for (let gy = 0; gy < size; gy++) {
             if (!symbols_shown[sx][sy][gx][gy])
               return;
           }
@@ -227,15 +227,15 @@ function onKeyPressed(event) {
 function rollSymbols() {
     // This function is to roll what symbols it should be for each squares
 
-  for (var sx = 0; sx < size; sx++) {
-    for (var sy = 0; sy < size; sy++) {
-      for (var gx = 0; gx < size; gx++) {
-        for (var gy = 0; gy < size; gy++) {
+  for (let sx = 0; sx < size; sx++) {
+    for (let sy = 0; sy < size; sy++) {
+      for (let gx = 0; gx < size; gx++) {
+        for (let gy = 0; gy < size; gy++) {
             if (symbols_grid[sx][sy][gx][gy])
                 continue;   // already set
 
-            var symbols_possible = getPossibleSymbols(sx, sy, gx, gy);
-            var symbol = getRandomItemInArray(symbols_possible);
+            let symbols_possible = getPossibleSymbols(sx, sy, gx, gy);
+            let symbol = getRandomItemInArray(symbols_possible);
             symbols_grid[sx][sy][gx][gy] = symbol;
             if (!checkLoneValidSymbols())
                 return false;
@@ -249,14 +249,14 @@ function rollSymbols() {
 
 function checkLoneValidSymbols() {
   // This is used to go though all spots and check if there only one available symbol to use
-  for (var sx = 0; sx < size; sx++) {
-    for (var sy = 0; sy < size; sy++) {
-      for (var gx = 0; gx < size; gx++) {
-        for (var gy = 0; gy < size; gy++) {
+  for (let sx = 0; sx < size; sx++) {
+    for (let sy = 0; sy < size; sy++) {
+      for (let gx = 0; gx < size; gx++) {
+        for (let gy = 0; gy < size; gy++) {
             if (symbols_grid[sx][sy][gx][gy])
                 continue;   // already set
 
-            var symbols_possible = getPossibleSymbols(sx, sy, gx, gy);
+            let symbols_possible = getPossibleSymbols(sx, sy, gx, gy);
             if (symbols_possible.length == 1) {
                 symbols_grid[sx][sy][gx][gy] = symbols_possible[0];
 
@@ -276,12 +276,12 @@ function checkLoneValidSymbols() {
 
 function getPossibleSymbols(sx1, sy1, gx1, gy1) {
   // Figure out which symbols it could be used for this
-  var symbols_possible = [...symbols_list]; // Clone an array
+  let symbols_possible = [...symbols_list]; // Clone an array
 
-  for (var sx2 = 0; sx2 < size; sx2++) {
-    for (var sy2 = 0; sy2 < size; sy2++) {
-      for (var gx2 = 0; gx2 < size; gx2++) {
-        for (var gy2 = 0; gy2 < size; gy2++) {
+  for (let sx2 = 0; sx2 < size; sx2++) {
+    for (let sy2 = 0; sy2 < size; sy2++) {
+      for (let gx2 = 0; gx2 < size; gx2++) {
+        for (let gy2 = 0; gy2 < size; gy2++) {
 
             // Symbols must be unique from eachother by section, row and col
             if (
@@ -289,7 +289,7 @@ function getPossibleSymbols(sx1, sy1, gx1, gy1) {
                 || (sx1 == sx2 && gx1 == gx2)   // col
                 || (sy1 == sy2 && gy1 == gy2)   // row
             ) {
-                var symbol = symbols_grid[sx2][sy2][gx2][gy2];
+                let symbol = symbols_grid[sx2][sy2][gx2][gy2];
                 removeItemInArray(symbols_possible, symbol);
             }
         }
