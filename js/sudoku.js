@@ -11,6 +11,30 @@ var symbols_list = []; // List of symbols to display
 var cxt;    // the canvas context to draw
 var selectedSquare = null;    // coords on the selected square
 
+var timer = null;
+var timer_count = 0;
+var incorrect_count = 0;
+
+document.addEventListener("DOMContentLoaded", function() {
+    timer = setInterval(function() {
+        timer_count++;
+
+        var minutes = Math.floor(timer_count / 60);
+        var seconds = timer_count % 60;
+
+        document.getElementById("sudoku-timer").textContent = minutes + ":" + String(seconds).padStart(2, "0");
+    }, 1000);
+});
+
+function endTimer() {
+    clearInterval(timer);
+
+    document.getElementById("sudoku-timer").style.color = "dodgerblue";
+    document.getElementById("sudoku-completed").style.opacity = 1;
+    document.getElementById("sudoku-count").textContent = incorrect_count;
+    document.getElementById("sudoku-count").style.color = incorrect_count ? "orangered" : "limegreen";
+}
+
 function draw() {
   // grid variable would be structured as this:
   // symbols_grid[sx][sy][gx][gy]
@@ -173,12 +197,31 @@ function onKeyPressed(event) {
     if (symbols_list.indexOf(key) == -1)    // If the key pressed isnt in any of the possible symbols, ignore
         return;
 
-    var color = symbols_grid[selectedSquare.sx][selectedSquare.sy][selectedSquare.gx][selectedSquare.gy] == key ? "limegreen" : "orangered";
+    var color = "limegreen";
+    if (symbols_grid[selectedSquare.sx][selectedSquare.sy][selectedSquare.gx][selectedSquare.gy] != key) {
+        color = "orangered";
+        incorrect_count++;
+    }
 
     // Clear the square back to white before drawing the text
     drawSquare(selectedSquare.sx, selectedSquare.sy, selectedSquare.gx, selectedSquare.gy, "white");
     drawText(selectedSquare.sx, selectedSquare.sy, selectedSquare.gx, selectedSquare.gy, color);
     selectedSquare = null;
+
+    // Has all of the squares been selected?
+    for (var sx = 0; sx < size; sx++) {
+      for (var sy = 0; sy < size; sy++) {
+        for (var gx = 0; gx < size; gx++) {
+          for (var gy = 0; gy < size; gy++) {
+            if (!symbols_shown[sx][sy][gx][gy])
+              return;
+          }
+        }
+      }
+    }
+
+    // All has been shown, end the timer
+    endTimer();
 }
 
 function rollSymbols() {
