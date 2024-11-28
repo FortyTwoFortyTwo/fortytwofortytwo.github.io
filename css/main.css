@@ -3,8 +3,8 @@
     --background-color-dark: #c77116;
     --background-box: #21777b;
 
-    --text-color-light: #c97f00;
-    --text-color-dark: #c94d00;
+    --text-color-light: #3696cd;
+    --text-color-dark: #25997e;
 
     --box-spacer: 60px;
     --box-border-width: 4px;
@@ -62,7 +62,7 @@ h1 {
 }
 
 h2 {
-    color: var(--text-color-dark);
+    color: var(--text-color-light);
 
     text-shadow: 1px 1px 0px black,
         -1px 1px 0px black,
