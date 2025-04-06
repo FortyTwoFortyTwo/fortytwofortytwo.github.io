@@ -57,8 +57,10 @@ $(document).ready(function()
             //Wrong square pressed, set colors and end game
             SetColor($(".memory-correct"), "green");
             SetColor($(this), "red");
-            SetColor($(".memory-start"), "blue");
+
             select = false;
+            start = true;
+            SetColor($(".memory-start"), "blue");
         }
     });
     
