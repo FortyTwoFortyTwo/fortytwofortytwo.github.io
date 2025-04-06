@@ -31,6 +31,11 @@
 }
 
 @font-face {
+    font-family: 'Puffy';
+    src: url("fonts/Puffy.otf") format("opentype");
+}
+
+@font-face {
     font-family: 'Deutsch';
     src: url("fonts/Deutsch.ttf") format("truetype");
 }
@@ -178,6 +183,51 @@ a:hover {
 .redsun h1 {
     font-family: "tf2build";
     color: #F25137;
+}
+
+/* METROLANDS */
+
+.metrolands {
+    background-image: url('imgs/metrolands.png');
+    background-size: cover;
+    background-position: center;
+    background-color: goldenrod !important;
+    box-shadow: 0px 1px 3px inset black, 0px 0px 2px 12px inset gold !important;
+    border-color: #797374;
+    padding: 16px;
+}
+
+.metrolands svg {
+    margin: 40px 20px 0px 20px;
+    max-width: 600px;
+
+    filter:
+        drop-shadow(-1px -1px 0 white)
+        drop-shadow(-1px 1px 0 white)
+        drop-shadow(1px -1px 0 white)
+        drop-shadow(1px 1px 0 white)
+        drop-shadow(-2px -2px 0 black)
+        drop-shadow(-2px 2px 0 black)
+        drop-shadow(2px -2px 0 black)
+        drop-shadow(2px 2px 0 black)
+        drop-shadow(10px 10px 0 black);
+}
+
+.metrolands text {
+    transform: perspective(100px) rotate(-5deg) rotateX(2deg) rotateY(-15deg) skewX(-10deg);
+}
+
+.metrolands text > tspan {
+    font-family: 'Puffy';
+    font-size: 150px;
+    letter-spacing: 8px;
+    stroke-width: 8px;
+
+    text-align: center;
+}
+
+.metrolands div {
+    filter: drop-shadow(0px 0px 2px black);
 }
 
 /* GAMES */
