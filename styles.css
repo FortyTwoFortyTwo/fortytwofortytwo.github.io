@@ -180,6 +180,19 @@ a:hover {
     color: #F25137;
 }
 
+/* GAMES */
+
+.games h1 {
+    font-family: 'Kimberley';
+    color: var(--background-color-light);
+}
+
+.games h2 {
+    font-family: system-ui;
+    font-size: 50px;
+    margin: 10px;
+}
+
 /* TF2 */
 
 .tf2 {
