@@ -163,17 +163,6 @@ a:hover {
     filter: drop-shadow(0 0 5px var(--box-color-shadow));
 }
 
-/* GAMES */
-
-.background-oddout {
-    --background-dark: rgba(26, 129, 189, 0.55);
-
-    background:
-        repeating-linear-gradient(15deg, transparent 0px, transparent 100px, var(--background-dark) 100px, var(--background-dark) 200px),
-        repeating-linear-gradient(75deg, transparent 0px, transparent 100px, var(--background-dark) 100px, var(--background-dark) 200px),
-        #34a8eb;
-}
-
 /* REDSUN */
 
 .redsun {
