@@ -1,34 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:site_name" content="FortyTwoFortyTwo"/>
 
-  <title>Sudoku game</title>
+    <title>Sudoku game</title>
 
-  <link rel="stylesheet" href="../styles.css">
-  <link rel="stylesheet" href="styles.css">
-  <script src="script.js"></script>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js"></script>
 </head>
+
 <body class="background-sudoku" onload="draw()">
-  <div class="flex flex-sudoku" style="height: 100vh">
-    <div class="flex-auto-vertical flex-center">
-      <div class="box-blur">
-        <h1 class="sudoku-title">Sudoku</h1>
-        <p>A Sudoku puzzle is a 9x9 grid with 81 cells. The grid is divided into nine 3x3 squares.</p>
-        <p>The goal is to fill in the grid with the numbers 1–9, without repeating any numbers in a row, column, or 3x3 square.</p>
-        <p>Correct numbers will appear in <span class="sudoku-color-correct">green</span>.</p>
-        <p>Incorrect numbers will appear in <span class="sudoku-color-incorrect">red</span> and will show correct number instead.</p>
-        <p>Select the square, then enter the number by keyboard to submit it.</p>
-        <h1 id="sudoku-timer" style="color: orange">0:00</h1>
-        <p id="sudoku-completed" style="color: orange; opacity: 0">Completed Sudoku with <span id="sudoku-count"></span> incorrect answers.</p>
-      </div>
+    <div class="flex flex-sudoku" style="height: 100vh">
+        <div class="flex-auto-vertical flex-center">
+            <div class="box-blur">
+                <h1 class="sudoku-title">Sudoku</h1>
+                <p>A Sudoku puzzle is a 9x9 grid with 81 cells. The grid is divided into nine 3x3 squares.</p>
+                <p>The goal is to fill in the grid with the numbers 1–9, without repeating any numbers in a row, column, or 3x3 square.</p>
+                <p>Correct numbers will appear in <span class="sudoku-color-correct">green</span>.</p>
+                <p>Incorrect numbers will appear in <span class="sudoku-color-incorrect">red</span> and will show correct number instead.</p>
+                <p>Select the square, then enter the number by keyboard to submit it.</p>
+                <h1 id="sudoku-timer" style="color: orange">0:00</h1>
+                <p id="sudoku-completed" style="color: orange; opacity: 0">Completed Sudoku with <span id="sudoku-count"></span> incorrect answers.</p>
+            </div>
+        </div>
+        <div class="flex-auto-horizonal">
+            <div class="sudoku-main flex-center">
+                <canvas id="sudoku"></canvas>
+            </div>
+        </div>
     </div>
-    <div class="flex-auto-horizonal">
-      <div class="sudoku-main flex-center">
-        <canvas id="sudoku"></canvas>
-      </div>
-    </div>
-  </div>
 </body>
 </html>
