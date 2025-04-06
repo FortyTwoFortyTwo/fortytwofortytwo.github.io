@@ -1,22 +1,31 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:100,200,300,400,500,600,700|Exo:100,200,300,400,500,600,700");
 
+.background-memory {
+    --background-dark: rgba(69, 82, 52, 0.55);
+
+    background:
+        repeating-linear-gradient(65deg, transparent 0px, transparent 100px, var(--background-dark) 100px, var(--background-dark) 150px),
+        repeating-linear-gradient(115deg, transparent 0px, transparent 100px, var(--background-dark) 100px, var(--background-dark) 150px),
+        #95965c;
+}
+
 /* ---------------------------------- Colors */
 
 .color-background-red {
-    background-color: #ff9a99;
+    background-color: #eb6564;
 }
 
 .color-background-green {
-    background-color: #6bde9d;
+    background-color: #479b6b;
 }
 
 .color-background-blue {
-    background-color: #94c7de;
+    background-color: #7592a9;
     cursor: pointer;
 }
 
 .color-background-grey {
-    background-color: #D0D0D0;
+    background-color: #adadad;
 }
 
 /* ---------------------------------- Box */
