@@ -22,22 +22,22 @@
 
 @font-face {
     font-family: 'tf2build';
-    src: url("../fonts/tf2build-webfont.woff") format("woff");
+    src: url("fonts/tf2build-webfont.woff") format("woff");
 }
 
 @font-face {
     font-family: 'Kimberley';
-    src: url("../fonts/kimberley bl.otf") format("opentype");
+    src: url("fonts/kimberley bl.otf") format("opentype");
 }
 
 @font-face {
     font-family: 'Deutsch';
-    src: url("../fonts/Deutsch.ttf") format("truetype");
+    src: url("fonts/Deutsch.ttf") format("truetype");
 }
 
 @font-face {
     font-family: 'Rounded Line 7';
-    src: url("../fonts/rounded_line_7.ttf") format("truetype");
+    src: url("fonts/rounded_line_7.ttf") format("truetype");
 }
 
 /* GLOBAL */
@@ -180,7 +180,7 @@ a:hover {
     border-color: #191715;
 
     background-color: #2B2724;
-    background-image: url("../imgs/redsun.png");
+    background-image: url("imgs/redsun.png");
     background-size: 200px 200px;
     background-repeat: no-repeat;
     background-position: 90% 100%;
