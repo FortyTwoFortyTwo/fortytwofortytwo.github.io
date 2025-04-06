@@ -1,0 +1,57 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:100,200,300,400,500,600,700|Exo:100,200,300,400,500,600,700");
+
+/* ---------------------------------- Colors */
+
+.color-background-red {
+	background-color: #ff9a99;
+}
+
+.color-background-green {
+	background-color: #6bde9d;
+}
+
+.color-background-blue {
+	background-color: #94c7de;
+}
+
+.color-background-grey {
+	background-color: #D0D0D0;
+}
+
+/* ---------------------------------- Box */
+
+.counter-info {
+	width: 33.33%;
+}
+
+.memory-row {
+	position: relative;
+	max-width: 42rem;
+	max-height: 42rem;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.memory-select {
+	width: 27.33%;
+	border-style: solid;
+	margin: 3%;
+	padding-top: 27.33%;
+}
+
+.memory-start {
+	width: 80%;
+	height: 4rem;
+	line-height: 4rem;
+	border-style: solid;
+	margin: 1rem 1rem 10% 10%;
+	font-size: 2rem;
+}
+
+/* ---------------------------------- Text */
+
+.font-exo {
+	font-family: "Exo", sans-serif;
+	font-weight: 700;
+	text-align: center;
+} 
