@@ -1,14 +1,14 @@
 :root {
-    --background-color-light: #e89631;
-    --background-color-dark: #c77116;
-    --background-box: #21777b;
+    --background-color-light: #3696cd;
+    --background-color-dark: #25997e;
+    --background-box: #b1646e;
 
-    --text-color-light: #3696cd;
-    --text-color-dark: #25997e;
+    --text-color-light: #e89631;
+    --text-color-dark: #c77116;
 
     --box-spacer: 60px;
     --box-border-width: 4px;
-    --box-border-color: #00414d;
+    --box-border-color: #8b2727;
     --box-color-shadow: #000000aa;
 
     --tf2-light: #9d5322;
@@ -19,6 +19,18 @@
 }
 
 /* FONTS */
+
+@font-face {
+    font-family: "Eesti";
+    src: url("fonts/GT-Eesti-Text-Light-subset.woff2") format("woff2");
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: "Eesti";
+    src: url("fonts/GT-Eesti-Text-Medium-subset.woff2") format("woff2");
+    font-weight: 600;
+}
 
 @font-face {
     font-family: 'tf2build';
@@ -66,16 +78,6 @@ h1 {
     margin: 5px auto;
 }
 
-h2 {
-    color: var(--text-color-light);
-
-    text-shadow: 1px 1px 0px black,
-        -1px 1px 0px black,
-        1px -1px 0px black,
-        -1px -1px 0px black,
-        4px 2px 0px black;
-}
-
 a {
     color: royalblue;
     text-decoration: none;
@@ -91,9 +93,9 @@ a:hover {
 .background-main {
     padding: 20px 0px 20px 0px;
 
-    background: radial-gradient(at top right, var(--background-color-dark), transparent 20%),
-                radial-gradient(at bottom right, var(--background-color-dark), transparent 20%),
-                radial-gradient(at left, var(--background-color-dark), transparent 20%),
+    background: radial-gradient(at top right, var(--background-color-dark), transparent 30%),
+                radial-gradient(at bottom right, var(--background-color-dark), transparent 30%),
+                radial-gradient(at left, var(--background-color-dark), transparent 50%),
                 linear-gradient(var(--background-color-light), var(--background-color-dark), var(--background-color-light));
     background-size: 100vw 100vw;
 /*
@@ -164,8 +166,79 @@ a:hover {
     height: var(--box-spacer);
 }
 
-.box-blur {
-    filter: drop-shadow(0 0 5px var(--box-color-shadow));
+/* FOUNDERS AND CODERS */
+
+.founders {
+    border-radius: 0;
+    border-color: black;
+    background: repeating-linear-gradient(135deg, white 0px, white 8px, #e1e1e1 8px, #e1e1e1 10px);
+
+    padding: 0;
+}
+
+.founders > div > h1,
+.founders > div > p {
+    display: inline-block;
+    padding: 6px 16px;
+
+    font-family: "Eesti";
+    color: black;
+    text-shadow: none;
+}
+
+.founders > div > h1 {
+    text-transform: none;
+    background-color: #ffe500;
+}
+
+.founders > div > p {
+    background-color: white;
+}
+
+.founders > div > div {
+    min-width: var(--box-border-width);
+    background-color: black;
+
+    border-top: var(--box-border-width) solid black;
+}
+
+.stonewaters {
+    background-image: url("imgs/stonewaters.png");
+    background-size: cover;
+    background-position: center;
+    padding: 0 var(--box-spacer);
+
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+    color: #fcf5e5;
+}
+
+.stonewaters > h2,
+.stonewaters > p {
+    display: inline-block;
+    padding: 5px;
+
+    background-color: #61462f;
+    text-shadow: -1px -1px 1px rgba(31, 16, 3, 0.5);
+}
+
+.stonewaters > h2 {
+    border: 10px ridge #3b2c20;
+}
+
+.stonewaters > p {
+    border: 10px outset #3b2c20;
+}
+
+.localevent {
+    background-color: #2d272f !important;
+    color: #e1d2e5;
+    padding: 0 var(--box-spacer);
+}
+
+.localevent > div {
+    margin: 20px;
+    background-color: #e1d2e5;
+    height: 4px;
 }
 
 /* REDSUN */
@@ -279,7 +352,7 @@ a:hover {
 }
 
 .maps h1 {
-    color: #5b9502;
+    color: #d99d2c;
 }
 
 .map {
