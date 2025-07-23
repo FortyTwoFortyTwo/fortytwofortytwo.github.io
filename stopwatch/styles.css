@@ -1,0 +1,75 @@
+:root {
+
+}
+
+.background-stopwatch {
+    color: white;
+    background: linear-gradient(0deg, #2b90bd, #78c0c9);
+}
+
+.box {
+    margin: 10px;
+    padding: 5px 10px;
+    min-width: 70px;
+}
+
+.flex-center {
+    display: flex;
+    align-self: center;
+    place-items: flex-start;
+}
+
+#stopwatch {
+    font-size: 100px;
+}
+
+#stopwatch-laps {
+    font-size: 24px;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+input {
+    outline: none;
+    background: transparent;
+    font-size: unset;
+    color: unset;
+    text-shadow: unset;
+
+    border: none;
+    border-bottom: solid 1px white;
+}
+
+.stopwatch-clickable {
+    position: relative;
+    cursor: pointer;
+}
+
+.stopwatch-clickable:before {
+    content: "";
+    display: block;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0px;
+    left: 0px;
+}
+
+.stopwatch-clickable:hover:active:before {
+    background: #0002;
+}
+
+.stopwatch-green {
+    background-color: #62cb29;
+    border-color: #106520;
+}
+
+.stopwatch-orange {
+    background-color: #f7b500;
+    border-color: #936b08;
+}
+
+.stopwatch-red {
+    background-color: #dd2e2e;
+    border-color: #790d0d;
+}

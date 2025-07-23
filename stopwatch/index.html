@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:site_name" content="FortyTwoFortyTwo"/>
+
+    <title>Stopwatch</title>
+
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js"></script>
+</head>
+
+<body class="background-stopwatch">
+    <div class="flex" style="height: 100vh">
+        <div class="flex-auto-vertical flex-center">
+            <div>
+                <h1 id="stopwatch"></h1>
+                <div class="flex">
+                    <div class="box stopwatch-clickable stopwatch-green" id="stopwatch-toggle" onclick="toggleStopwatch()">Start</div>
+                    <div class="box stopwatch-clickable stopwatch-orange" onclick="addLap()">Add lap</div>
+                    <div class="box stopwatch-clickable stopwatch-red" onclick="reset()">Reset</div>
+                </div>
+                <div class="box flex flex-vertical stopwatch-orange" style="height: 50vh">
+                    <div class="flex flex-center" style="flex: none">
+                        <h2 style="margin: 16px">Laps</h2>
+                        <div class="box stopwatch-clickable stopwatch-red" onclick="clearLaps()">Clear all laps</div>
+                    </div>
+                    <div id="stopwatch-laps"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
